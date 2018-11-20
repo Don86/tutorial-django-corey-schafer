@@ -11,3 +11,9 @@ class Post(models.Model):
 	date_posted = models.DateTimeField(default=timezone.now)
 	# on_delete...: if a user is deleted, then all their posts are deleted as well
 	author = models.ForeignKey(User, on_delete=models.CASCADE) 
+
+	def __str__(self):
+		"""The “informal” or nicely printable string representation of an object. 
+		This is for the end user.
+		"""
+		return self.title

@@ -2,6 +2,7 @@ from django.shortcuts import render
 # Import removed, since we no longer need it
 # Kept for posterity
 #from django.http import HttpResponse
+from .models import Post
 
 # Create your views here.
 
@@ -23,8 +24,8 @@ posts = [
 def home(request):
 	"""Return render instance, with input requst, and target template path
 	"""
-	# Pass the posts list of dictionaries to render()
-	context = {'posts':posts}
+	# Pull data from the database
+	context = {'posts':Post.objects.all()}
 	return render(request, 'blog/home.html', context)
 
 
